@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Poppins:wght@300;400;600;700&display=swap');
+
+/* General Body and HTML Styling */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FFFFFF;
+  background-attachment: fixed;
+  color: #1A3A5A;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Diagonal decorative background with patterns and glaze */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0% 100%, 33.33% 100%, 100% 66.67%, 100% 100%);
+  z-index: -1;
+  background-image:
+    linear-gradient(
+      to top left,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.05) 30%,
+      transparent 70%
+    ),
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='0' x2='40' y2='40' stroke='%23F2B6B3' stroke-width='1' opacity='0.3'/%3E%3Cline x1='40' y1='0' x2='0' y2='40' stroke='%23A9D0F5' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(
+      45deg,
+      #F2B6B3,
+      #F2B6B3 20px,
+      #A9D0F5 20px,
+      #A9D0F5 40px
+    );
+  background-size: 100% 100%, 40px 40px, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
+  background-repeat: no-repeat, repeat, repeat;
+}
+
+/* Main Container */
+.magic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Application Title */
+.app-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 35px;
+  background: linear-gradient(to right, #2C5F8D, #5C89B8, #A9D0F5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-shadow: 0 5px 15px rgba(44, 95, 141, 0.1);
+  position: relative;
+  animation: titleFadeIn 1.5s ease-out forwards;
+}
+
+@keyframes titleFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Login Box */
+.login-box {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(254, 203, 204, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 50px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 12px 40px rgba(44, 95, 141, 0.1);
+  z-index: 10;
+  transform: translateY(0);
+  animation: boxPopIn 1s ease-out forwards;
+}
+
+@keyframes boxPopIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Input Fields */
+.input,
+input[type="file"] {
+  font-family: 'JetBrains Mono', monospace;
+  padding: 15px;
+  width: calc(100% - 30px);
+  margin: 16px 0 22px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #5C89B8;
+  color: #2C5F8D;
+  font-size: 1.1rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.input:focus {
+  border-color: #2C5F8D;
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(44, 95, 141, 0.08), inset 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+/* Buttons */
+.button {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #F2B6B3, #FECBCC);
+  color: #2C5F8D;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  margin: 12px 8px;
+  box-shadow: 0 8px 20px rgba(254, 188, 204, 0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover {
+  background: linear-gradient(to right, #FECBCC, #F2B6B3);
+  color: #1A3A5A;
+  box-shadow: 0 0 25px rgba(254, 188, 204, 0.4);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(254, 188, 204, 0.1);
+}
+
+/* Uploaded Image */
+img {
+  margin-top: 30px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 3px solid #FECBCC;
+  box-shadow: 0 8px 20px rgba(254, 188, 204, 0.2), 0 0 15px rgba(44, 95, 141, 0.08);
+  transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 35px;
+    max-width: 90%;
+  }
+
+  .app-title {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 25px;
+    border-radius: 20px;
+  }
+
+  .app-title {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+  }
+
+  .input {
+    padding: 12px;
+    margin: 12px 0 18px;
+    font-size: 1rem;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    margin: 8px 4px;
+  }
+
+  img {
+    margin-top: 25px;
+    border-radius: 12px;
+  }
+}
+
+/* Accessibility */
+*:focus-visible {
+  outline: 3px solid #5C89B8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
